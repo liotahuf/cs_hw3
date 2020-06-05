@@ -1,6 +1,8 @@
-10:14:39 **** Incremental Build of configuration Debug for project hw3_debug ****
+10:30:35 **** Incremental Build of configuration Debug for project hw3_debug ****
 make all 
+make: Warning: File 'subdir.mk' has modification time 1.2 s in the future
 make: Nothing to be done for 'all'.
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
-10:14:39 Build Finished (took 381ms)
+10:30:35 Build Finished (took 375ms)
 

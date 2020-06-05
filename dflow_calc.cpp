@@ -12,8 +12,8 @@ typedef struct node {
 	int dep1;
 	int dep2;
 	int nodeDepth;
-	int myLatency;
 	bool hasDependent;
+	int myLatency;
 } node_t;
 
 int ROB[32] = { -1 };
@@ -79,11 +79,15 @@ ProgCtx analyzeProg(const unsigned int opsLatency[], const InstInfo progTrace[],
 
 	//build exit node
 	std::map<int, node_t>::iterator it;
+	
 	for (it = myContext->nodesMap.begin(); it != myContext->nodesMap.end(); it++)
 	{
+		
 		if (it->second.hasDependent == false)
 		{
+			
 			myContext->exit.push_back(it->first);
+		
 		}
 	}
 
@@ -132,13 +136,16 @@ int getProgDepth(ProgCtx ctx) {
 	Context_t* myContext = (Context_t*)ctx;
 	std::vector<int>::iterator it;
 	int tmpProgDepth = 0;
+
 	for (it = myContext->exit.begin(); it != myContext->exit.end(); it++)
 	{
+		
 		if ((myContext->nodesMap[*it].nodeDepth + myContext->nodesMap[*it].myLatency) > tmpProgDepth)
 		{
 			tmpProgDepth = myContext->nodesMap[*it].nodeDepth + myContext->nodesMap[*it].myLatency;
 		}
 	}
+	
 	return tmpProgDepth;
 }
 
