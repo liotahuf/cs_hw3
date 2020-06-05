@@ -1,0 +1,57 @@
+09:41:23 **** Build of configuration Debug for project hw3_debug ****
+make all 
+make: Warning: File 'objects.mk' has modification time 0.84 s in the future
+Building file: ../dflow_calc.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"dflow_calc.d" -MT"dflow_calc.o" -o "dflow_calc.o" "../dflow_calc.cpp"
+../dflow_calc.cpp: In function ‘void* analyzeProg(const unsigned int*, const InstInfo*, unsigned int)’:
+../dflow_calc.cpp:34:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (int i = 0; i < numOfInsts; i++)
+                    ^
+Finished building: ../dflow_calc.cpp
+ 
+Building file: ../dflow_main.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"dflow_main.d" -MT"dflow_main.o" -o "dflow_main.o" "../dflow_main.c"
+Finished building: ../dflow_main.c
+ 
+Building target: hw3_debug
+Invoking: GCC C++ Linker
+g++  -o "hw3_debug"  ./dflow_calc.o ./dflow_main.o   
+Finished building target: hw3_debug
+ 
+make: warning:  Clock skew detected.  Your build may be incomplete.
+09:41:40 **** Incremental Build of configuration Debug for project hw3_debug ****
+make all 
+make: Warning: File 'subdir.mk' has modification time 0.78 s in the future
+make: Nothing to be done for 'all'.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+09:42:39 **** Incremental Build of configuration Debug for project hw3_debug ****
+make all 
+make: Warning: File 'subdir.mk' has modification time 0.3 s in the future
+make: Nothing to be done for 'all'.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+09:44:26 **** Incremental Build of configuration Debug for project hw3_debug ****
+make all 
+make: Warning: File 'subdir.mk' has modification time 0.68 s in the future
+make: Nothing to be done for 'all'.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+10:02:41 **** Incremental Build of configuration Debug for project hw3_debug ****
+make all 
+Building file: ../dflow_calc.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"dflow_calc.d" -MT"dflow_calc.o" -o "dflow_calc.o" "../dflow_calc.cpp"
+../dflow_calc.cpp: In function ‘void* analyzeProg(const unsigned int*, const InstInfo*, unsigned int)’:
+../dflow_calc.cpp:40:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (int i = 0; i < numOfInsts; i++)
+                    ^
+Finished building: ../dflow_calc.cpp
+ 
+Building target: hw3_debug
+Invoking: GCC C++ Linker
+g++  -o "hw3_debug"  ./dflow_calc.o ./dflow_main.o   
+Finished building target: hw3_debug
+ 
+10:14:39 **** Incremental Build of configuration Debug for project hw3_debug ****
+make all 
+make: Nothing to be done for 'all'.

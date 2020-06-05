@@ -9,9 +9,10 @@
 
 typedef struct node {
 	InstInfo myInfo;
-	unsigned int dep1;
-	unsigned int dep2;
+	int dep1;
+	int dep2;
 	int nodeDepth;
+	int myLatency;
 	bool hasDependent;
 } node_t;
 
@@ -26,6 +27,11 @@ typedef struct Context{
 
 ProgCtx analyzeProg(const unsigned int opsLatency[], const InstInfo progTrace[], unsigned int numOfInsts) {
     
+	for (int i = 0; i < 32; i++)
+	{
+		ROB[i] = -1;
+	}
+
 	Context_t* myContext;
 	myContext = new Context_t;
 
@@ -62,6 +68,10 @@ ProgCtx analyzeProg(const unsigned int opsLatency[], const InstInfo progTrace[],
 
 		//update ROB - the instruction i is now the last one who wrote to ROB in place myInfo.dst, used to know nexts instructions dependecies
 		ROB[curr_node.myInfo.dstIdx] = i;
+
+
+		//update node latency
+		curr_node.myLatency = opsLatency[curr_node.myInfo.opcode];
 
 		//update nodes map
 		myContext->nodesMap[i] = curr_node;
@@ -124,9 +134,9 @@ int getProgDepth(ProgCtx ctx) {
 	int tmpProgDepth = 0;
 	for (it = myContext->exit.begin(); it != myContext->exit.end(); it++)
 	{
-		if (myContext->nodesMap[*it].nodeDepth > tmpProgDepth)
+		if ((myContext->nodesMap[*it].nodeDepth + myContext->nodesMap[*it].myLatency) > tmpProgDepth)
 		{
-			tmpProgDepth = myContext->nodesMap[*it].nodeDepth;
+			tmpProgDepth = myContext->nodesMap[*it].nodeDepth + myContext->nodesMap[*it].myLatency;
 		}
 	}
 	return tmpProgDepth;
